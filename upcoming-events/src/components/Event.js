@@ -22,13 +22,14 @@ function Event(props) {
     return <article>
         <div className='all-event-details'>
             <div className='event-description'>
-                <h2 className='event-description-title'><a href="">{props.name}, {props.location}</a></h2>
+                <h2 className='event-description-title'><a href="">{props.name}</a></h2>
                 <p className='description'>{props.description}</p>
             </div>
             <div className='event-details'>
                 <p className='detail'>{props.month} {props.day}</p>
                 <p className='detail'>{props.time}</p>
-                <p className='detail'>{props.address}</p>
+                <p className='detail'>{props.location}</p>
+                <p className='detail location'>{props.address}</p>
 
             </div>
         </div>

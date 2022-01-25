@@ -47,6 +47,11 @@ article {
   border: 1px solid lightgray;
   text-decoration: none;
   text-align: center;
+  transition: 0.3s;
+}
+
+.events-buttons-row div div button:hover {
+  background-color: lightgray;
 }
 
 .events-buttons-row div {
@@ -60,7 +65,7 @@ article {
 .detail {
   padding: 10px 10px 0px 15%;
   font-weight: bold;
-  margin-bottom: 14px;
+  margin-bottom: 0;
   margin-top: 0;
 }
 
@@ -74,6 +79,13 @@ article {
 
 p {
   cursor:default;
+}
+
+.location {
+  padding-top: 0px;
+  font-weight: 100;
+  font-size: 13px;
+
 }
 
 @media only screen and (max-width: 600px) {
