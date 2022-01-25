@@ -6,7 +6,11 @@
 }
 
 .event-description, .event-links {
-    padding: 30px;
+    padding: 20px 30px;
+}
+
+.event-description-title {
+    margin-top: 0px;
 }
 
 .event-description div h1 {
@@ -77,10 +81,6 @@ p {
 .button-row button {
     margin-right: 10px;
 }
-
-/* .event-description div h1 {
-    text-align: left;
-} */
 
 @media only screen and (max-width: 600px) {
     .total-event-details-view {

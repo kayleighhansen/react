@@ -7,7 +7,7 @@ import Model from './components/Model';
 function App() {
   return (
     <div>
-      <h1>Upcoming Events</h1>
+      <h1 className="main-title">Upcoming Events</h1>
       <div class="search-bar">
         <form>
           <input name="location" placeholder="location" class="location-input" ></input>

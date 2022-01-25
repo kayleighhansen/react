@@ -7,10 +7,6 @@
   pointer-events: none;
 }
 
-h1 {
-  text-align: center;
-}
-
 .search-bar {
   background-color: rgb(232, 232, 232);
   padding: 10px;

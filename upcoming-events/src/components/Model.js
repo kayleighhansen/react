@@ -12,9 +12,10 @@ function Model() {
                     doloremque eius commodi nesciunt natus. Ipsam repellat excepturi, ipsa corrupti quod ullam libero
                     minima? Fugiat, iste rerum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus nam ex
                     nostrum atque quasi deleniti harum, praesentium voluptas suscipit vitae voluptatum et esse corrupti,
-                    fugiat odio, nisi assumenda. Sit, corporis!</p>
+                    fugiat odio, nisi assumenda. Sit, corporis! This event occurs <span className="added-detail">weekly</span></p>
                 <p>10:00 AM <span className="dash">-</span> <span className="added-detail">Check In</span></p>
                 <p>10:00 AM - 12:00 PM <span className="dash">-</span> <span className="added-detail">Event</span></p>
+                
             </div>
 
             <div>
