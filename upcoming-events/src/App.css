@@ -11,6 +11,44 @@ h1 {
   text-align: center;
 }
 
+.search-bar {
+  background-color: rgb(232, 232, 232);
+  padding: 10px;
+  margin:0px 50px;
+  display:flex;
+  justify-content: center;
+}
+
+.search-bar form input {
+  font-size: 15px;
+  margin: 5px;
+  border: 1px solid lightgray;
+  padding: 5px;
+}
+
+.search-bar form input:focus {
+  background-color: #7cbef0;
+  color:white;
+  border:none;
+}
+
+.search-bar form button {
+  height: 28px;
+  background-color: #3a8ece;
+  border: none;
+  color: white;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.search-bar form button:hover {
+  background-color: #3277ac;
+}
+
+.day-input {
+  width: 45px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

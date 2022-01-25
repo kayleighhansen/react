@@ -4,11 +4,12 @@ function Event(props) {
     }
 
     function displayEvents() {
-        
+
     }
 
     function viewDetails() {
         console.log("view " + props.id);
+    
     }
 
     function registerEvent() {
@@ -27,6 +28,7 @@ function Event(props) {
             <div className='event-details'>
                 <p className='detail'>{props.month} {props.day}</p>
                 <p className='detail'>{props.time}</p>
+                <p className='detail'>{props.address}</p>
 
             </div>
         </div>
