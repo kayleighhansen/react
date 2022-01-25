@@ -1,13 +1,100 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+article {
+  border: 1px solid black;
+  display:grid;
+  grid-template-rows: 1fr 50px;
+  margin: 60px 50px;
+  box-shadow: 0px 3px 10px rgb(240, 240, 240);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.event-description-title a {
+  color:black;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.event-description-title a:hover {
+  color: rgb(116, 116, 116);
+}
+
+.all-event-details {
+  display:grid;
+  grid-template-columns: 70% 30%;
+}
+
+.event-details {
+  border-left: 1px solid black;
+}
+
+.events-buttons-row {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  background-color: lightgray;
+  height: 50px;
+  display: grid;
+  grid-template-columns: 70% 30%;
+}
+
+.events-buttons-row div {
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.events-buttons-row div div button {
+  width: 150px;
+  margin: 10px;
+  color: black;
+  text-decoration: none;
+  text-align: center;
+}
+
+.events-buttons-row div {
+  display: flex;
+}
+
+.event-description {
+  padding: 0px 25px;
+}
+
+.detail {
+  padding: 10px 10px 0px 15%;
+  font-weight: bold;
+}
+
+.share-btn {
+  width: 60px !important;
+}
+
+.share-btn-container {
+  margin-left: auto;
+}
+
+p {
+  cursor:default;
+}
+
+@media only screen and (max-width: 600px) {
+
+  .all-event-details {
+    display:block;
+  }
+
+  .event-details {
+    border-left:none;
+    border-top: 1px solid black;
+  }
+
+  .detail {
+    padding: 5px 10px 0px 30px;
+    font-weight: bold;
+  }
+
+  article {
+    display:block;
+  }
+
+  .events-buttons-row div div a {
+    height: 30px;
+    width: 100px;
+    margin: 10px;
+}
 }

@@ -1,23 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
+// import './index.css';
+import Event from './components/Event';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Upcoming Events</h1>
+      <Event name="Bengal for the Day" location="Pocatello" day="01" month="JAN" time="10:00 AM" description="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum incidunt dolor voluptatem dolores debitis obcaecati hic mollitia, sequi maxime libero iusto repellendus. Sunt, error eum quisquam necessitatibus mollitia fugit illum?" id="01"/>
+      <Event name="Day of Inclusion" location="Pocatello" day="02" month="JAN" time="10:00 AM" description="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum incidunt dolor voluptatem dolores debitis obcaecati hic mollitia, sequi maxime libero iusto repellendus. Sunt, error eum quisquam necessitatibus mollitia fugit illum?" id="02"/>
+      <Event name="Bengal for the Day" location="Pocatello" day="03" month="JAN" time="10:00 AM" description="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum incidunt dolor voluptatem dolores debitis obcaecati hic mollitia, sequi maxime libero iusto repellendus. Sunt, error eum quisquam necessitatibus mollitia fugit illum?" id="03"/>
     </div>
   );
 }
