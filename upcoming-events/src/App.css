@@ -26,11 +26,11 @@ h1 {
   padding: 5px;
 }
 
-.search-bar form input:focus {
+/* .search-bar form input:focus {
   background-color: #7cbef0;
   color:white;
   border:none;
-}
+} */
 
 .search-bar form button {
   height: 28px;

@@ -12,7 +12,7 @@ article {
 }
 
 .event-description-title a:hover {
-  color: rgb(116, 116, 116);
+  color: #317fbb;
 }
 
 .all-event-details {
@@ -51,7 +51,8 @@ article {
 }
 
 .events-buttons-row div div button:hover {
-  background-color: lightgray;
+  background-color: #317fbb;
+  color: white;
 }
 
 .events-buttons-row div {

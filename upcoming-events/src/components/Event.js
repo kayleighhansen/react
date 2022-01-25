@@ -1,11 +1,11 @@
 function Event(props) {
-    function getEvents() {
+    // function getEvents() {
 
-    }
+    // }
 
-    function displayEvents() {
+    // function displayEvents() {
 
-    }
+    // }
 
     function viewDetails() {
         console.log("view " + props.id);

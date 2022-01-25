@@ -1,9 +1,12 @@
 .total-event-details-view {
     display: grid;
-    grid-template-columns: 60% 40%;
-    padding: 20px;
-    margin: 20px;
-    box-shadow: 0px 0px 10px lightgray;
+    grid-template-columns: 70% 30%;
+    margin: 50px;
+    box-shadow: 0px 0px 10px rgb(230 230 230);
+}
+
+.event-description, .event-links {
+    padding: 30px;
 }
 
 .event-description div h1 {
@@ -11,7 +14,7 @@
 }
 
 .event-links {
-    padding-top: 40px;
+    padding-top: 70px;
     padding-left: 5%;
 }
 
@@ -38,6 +41,7 @@ p {
 
 .group-of-social-media {
     display:flex;
+    justify-content: center;
 }
 
 .social-media-icon {
@@ -47,7 +51,7 @@ p {
     padding: 5px;
     border-radius: 15px;
     text-align: center;
-    margin-right: 10px;
+    margin: 0px 10px;
     transition: 0.3s;
 }
 
@@ -74,6 +78,10 @@ p {
     margin-right: 10px;
 }
 
+/* .event-description div h1 {
+    text-align: left;
+} */
+
 @media only screen and (max-width: 600px) {
     .total-event-details-view {
         display: block;
@@ -86,5 +94,9 @@ p {
 
     .event-links button {
         margin-bottom: 20px;
+    }
+
+    .event-links {
+        padding: 30px;
     }
 }
