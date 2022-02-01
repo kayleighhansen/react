@@ -1,6 +1,5 @@
 
-
-function Model() {
+function Modal() {
 
     return <div className="total-event-details-view">
         <div className="event-description">
@@ -67,4 +66,4 @@ function Model() {
 
 }
 
-export default Model;
+export default Modal;

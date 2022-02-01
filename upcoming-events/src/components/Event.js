@@ -22,7 +22,7 @@ function Event(props) {
     return <article>
         <div className='all-event-details'>
             <div className='event-description'>
-                <h2 className='event-description-title'><a href="">{props.name}</a></h2>
+                <h2 className='event-description-title'><a href="#">{props.name}</a></h2>
                 <p className='description'>{props.description}</p>
             </div>
             <div className='event-details'>

@@ -1,8 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
 import './details.css';
 import Event from './components/Event';
-import Model from './components/Model';
+import Modal from './components/Modal';
 
 function App() {
   return (
@@ -20,7 +19,7 @@ function App() {
       <Event address="123 Street State" name="Day of Inclusion" location="Pocatello" day="02" month="JAN" time="10:00 AM" description="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum incidunt dolor voluptatem dolores debitis obcaecati hic mollitia, sequi maxime libero iusto repellendus. Sunt, error eum quisquam necessitatibus mollitia fugit illum?" id="02"/>
       <Event address="123 Street State" name="Bengal for the Day" location="Pocatello" day="03" month="JAN" time="10:00 AM" description="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum incidunt dolor voluptatem dolores debitis obcaecati hic mollitia, sequi maxime libero iusto repellendus. Sunt, error eum quisquam necessitatibus mollitia fugit illum?" id="03"/>
 
-      <Model />
+      <Modal />
     </div>
   );
 }
