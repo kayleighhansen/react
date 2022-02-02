@@ -8,7 +8,7 @@ class Article extends React.Component {
         this.mainStyle = {
             article: {
                 margin: "40px 40px",
-                border: "1px solid gray"
+                border: "1px solid lightgray"
             },
             allEventDetails: {
                 display: "grid",
@@ -21,12 +21,12 @@ class Article extends React.Component {
                 marginLeft: "auto"
             },
             eventsButtonsRow: {
-                backgroundColor: "lightgray",
+                backgroundColor: "#e8e8e8",
                 display: "flex"
             },
             eventDescription: {
                 padding: "0px 20px",
-                borderRight: "1px solid gray"
+                borderRight: "1px solid lightgray"
             },
             eventDetails: {
                 padding: "0px 20px"
@@ -104,7 +104,7 @@ class Article extends React.Component {
             infoBox: {
                 backgroundColor: "rgb(244 244 244)",
                 padding: "5px 10px",
-                margin: "10px 5px",
+                margin: "10px 0px 10px 0px",
             },
             infoBoxTitle: {
                 marginBottom: "0",
@@ -233,7 +233,7 @@ class Article extends React.Component {
                                     {this.props.description}
                                 </p>
                                 <p>
-                                    {this.hasCheckIn ? this.hasCheckIn + '- Check in' : ''}
+                                    {this.hasCheckIn = '' ? this.hasCheckIn + '- Check in' : ''}
                                 </p>
                                 <p>
                                     {this.props.eventStartTime} - {this.props.eventEndTime} <span className="dash">-</span>{" "}
@@ -242,22 +242,19 @@ class Article extends React.Component {
                             </div>
 
                             <div>
-
                                 <p>
                                     {this.props.locationDescription}
                                 </p>
                             </div>
 
                             <div>
-
                                 <h3>Price</h3>
 
-                                <p>{this.cost != "0.00" ? this.cost : 'FREE'} </p>
+                                <p>{this.cost !== "0.00" ? this.cost : 'FREE'} </p>
 
-                                <p>{this.hasIncludedinPrice != "null" ? this.hasIncludedinPrice : ''}</p>
+                                <p>{this.hasIncludedinPrice !== "null" ? this.hasIncludedinPrice : ''}</p>
 
                                 <p>{this.needsHelp = "0.00" ? '' : 'If you need help paying for a participation fee, please contact us at email@email.com'} </p>
-
                             </div>
 
                             <div>
@@ -268,10 +265,7 @@ class Article extends React.Component {
                                 <p>{this.volunteerContact = "null" ? '' : this.props.volunteersContactName}</p>
                                 <p>{this.volunteerEmail = "null" ? '' : this.props.volunteersContactEmail}</p>
                                 <p>{this.volunteerPhone = "null" ? '' : this.props.volunteersContactPhone}</p>
-
                             </div>
-
-
                         </div>
 
                         <div style={this.modalStyle.generalDetails}>
@@ -313,8 +307,7 @@ class Article extends React.Component {
                                     <b>COST</b>
                                 </p>
 
-                                <p style={this.modalStyle.infoBoxText}>{this.cost != "0.00" ? '$' + this.cost : 'FREE'} </p>
-
+                                <p style={this.modalStyle.infoBoxText}>{this.cost !== "0.00" ? '$' + this.cost : 'FREE'} </p>
                             </div>
 
                             <div style={this.modalStyle.infoBox}>
@@ -330,7 +323,6 @@ class Article extends React.Component {
                                     <div style={this.modalStyle.socialBox} className='message'></div>
                                 </div>
                             </div>
-
 
                         </div>
                     </div>

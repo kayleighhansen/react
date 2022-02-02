@@ -26,7 +26,7 @@ function App() {
       
       eventEndTime="8:30 PM"
       eventStartTime="7:00 PM"
-      eventCheckInTime="10:00 AM"
+      eventCheckInTime=""
       eventType="Drop In Game" 
       
       isRepeating="yes"
@@ -57,8 +57,7 @@ function App() {
       volunteersContactName="null"
       volunteersContactEmail="null"
       volunteersContactPhone="null"
-      
-
+    
       /></div>
   );
 }
