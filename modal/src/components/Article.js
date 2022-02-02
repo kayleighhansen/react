@@ -141,6 +141,7 @@ class Article extends React.Component {
         this.volunteerContact = this.props.volunteersContactName;
         this.volunteerEmail = this.props.volunteersContactPhone;
         this.volunteerPhone = this.props.volunteerContactPhone;
+        this.website = this.props.locationWebsite;
 
         // set initial state
         this.state = {
@@ -301,7 +302,7 @@ class Article extends React.Component {
                                     </a>
                                 </p>
                                 <p style={this.modalStyle.infoBoxText}>
-                                    <a href="{this.props.locationWebsite}" style={this.modalStyle.modalLink}>
+                                    <a href="" style={this.modalStyle.modalLink}>
                                         {this.props.location} Website
                                     </a>
                                 </p>
