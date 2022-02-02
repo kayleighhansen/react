@@ -297,12 +297,12 @@ class Article extends React.Component {
                                     {this.props.location}
                                 </p>
                                 <p style={this.modalStyle.infoBoxText}>
-                                    <a href="" style={this.modalStyle.modalLink}>
+                                    <a href={this.props.addressGoogleMaps} style={this.modalStyle.modalLink}>
                                         {this.props.addressStreet} {this.props.addresCity} {this.props.addressState} {this.props.addressZip} {this.props.addressCountry}
                                     </a>
                                 </p>
                                 <p style={this.modalStyle.infoBoxText}>
-                                    <a href="" style={this.modalStyle.modalLink}>
+                                    <a href={this.website} style={this.modalStyle.modalLink}>
                                         {this.props.location} Website
                                     </a>
                                 </p>
