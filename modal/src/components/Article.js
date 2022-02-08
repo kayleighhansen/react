@@ -149,7 +149,6 @@ class Article extends React.Component {
             isInnerModalOpen: false
         };
 
-
         // bind functions
         this.closeModal = this.closeModal.bind(this);
         this.openModal = this.openModal.bind(this);
