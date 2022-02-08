@@ -5,11 +5,9 @@ class Article extends React.Component {
     constructor(props) {
         super(props);
 
-        articleNumber = 4;
-
-        articleNumber.forEach((article) => {
-
-        })
+        return {
+            
+        }
 
     }
 }

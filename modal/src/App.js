@@ -1,7 +1,25 @@
 import './App.css';
 import Article from './components/Article';
+import {useEffect} from 'react';
+
+
 
 function App() {
+
+  useEffect(() => {
+    fetch('http://hoopcamp-dev.azurewebsites.net/events/getEvents', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+    }).then(data => {
+        return data.json()
+        .then(result => {
+            console.log(result.value);
+        })
+    }).catch(err => {console.log(err)});
+}, []);
+  
   return (
     <div>
     <Article 
