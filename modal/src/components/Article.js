@@ -1,5 +1,5 @@
 import Modal from './Modal';
-import React, { Component } from 'react';
+import React from 'react';
 
 class Article extends React.Component {
     constructor(props) {
@@ -130,7 +130,7 @@ class Article extends React.Component {
             }
         };
 
-        this.abbreviated = this.props.eventMonth.substring(0, 3).toUpperCase();
+        this.abbreviated = this.props.eventMonth;
         this.hasMotto = this.props.motto;
         this.hasCheckIn = this.props.eventCheckInTime;
         this.hasIncludedinPrice = this.props.includedInPrice;

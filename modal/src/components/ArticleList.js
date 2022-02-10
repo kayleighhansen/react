@@ -1,13 +1,19 @@
-import Modal from './Modal';
-import React, { Component } from 'react';
+import Article from './Article';
+import React from 'react';
 
-class Article extends React.Component {
-    constructor(props) {
-        super(props);
+class ArticleList extends React.Component {
+    // constructor(props) {
+    //     super(props);
+    // }
 
-        return {
-            
-        }
+    render() {
+        console.log(this.props)
+        return <div> 
 
+                <Article />
+
+        </div>
     }
 }
+
+export default ArticleList;
