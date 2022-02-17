@@ -5,6 +5,7 @@ class Article extends React.Component {
     constructor(props) {
         super(props);
 
+
         this.mainStyle = {
             article: {
                 margin: "40px 40px",
@@ -205,7 +206,7 @@ class Article extends React.Component {
                                 </button>
                             </div>
                             <div>
-                                <button style={this.mainStyle.button}> Register</button>
+                                <button style={this.mainStyle.button} href=""> Register</button>
                             </div>
                         </div>
                         <div style={this.mainStyle.shareBtnContainer}>
