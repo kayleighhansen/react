@@ -131,17 +131,53 @@ class Article extends React.Component {
             }
         };
 
-        this.abbreviated = this.props.eventMonth;
+    // Display the Start Time 
+        this.months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+        this.abbreviated = (this.months[this.props.startTime.substring(5, 7) - 1]).substring(0, 3).toUpperCase();
+        this.eventDay = this.props.startTime.substring(8, 10);
+
+        this.hour = parseInt(this.props.startTime.substring(11, 13));
+        this.minutes = this.props.startTime.substring(14, 16);
+
+        if(this.hour < 12) {
+            this.timeDay = "AM";
+            
+        } else {
+            this.timeDay = "PM";
+            this.hour = this.hour - 12;
+            console.log(this.hour);
+        }
+
+    // Display the End Time
+        this.end_hour = parseInt(this.props.endTime.substring(11, 13));
+        this.end_minutes = this.props.endTime.substring(14, 16);
+
+        if(this.end_hour <= 12) {
+            this.end_timeDay = "AM";
+            
+        } else {
+            this.end_timeDay = "PM";
+            this.end_hour = this.end_hour - 12;
+        }
+
+    // Modal Details
+        // description
         this.hasMotto = this.props.motto;
         this.hasCheckIn = this.props.eventCheckInTime;
+
+        // price
         this.hasIncludedinPrice = this.props.includedInPrice;
         this.cost = this.props.cost;
-        this.needsHelp = this.props.cost;
+
+        // volunteers
         this.volunteersNeeded = this.props.volunteersNeeded;
         this.interestedVolunteering = this.props.volunteersNeeded;
         this.volunteerContact = this.props.volunteersContactName;
         this.volunteerEmail = this.props.volunteersContactPhone;
         this.volunteerPhone = this.props.volunteerContactPhone;
+
+        // sidebar
         this.website = this.props.locationWebsite;
 
         // set initial state
@@ -188,12 +224,10 @@ class Article extends React.Component {
                         </div>
                         <div style={this.mainStyle.eventDetails}>
                             <p>
-                                <b>{this.props.eventDay} {this.abbreviated}</b>
+                                <b>{this.eventDay} {this.abbreviated}</b>
                             </p>
-                            <p className="detail">{this.props.eventStartTime} {this.props.timeZone}</p>
-                            <p className="detail">
-                                <b> {this.props.location}</b>
-                            </p>
+                            <p className="detail">{this.hour}:{this.minutes} - {this.end_hour}:{this.end_minutes} { this.end_timeDay }</p>
+                            <p className="detail">{this.props.city}, {this.props.state}</p>
                             <p className="detail location">{this.props.addressStreet} {this.props.addressCity} {this.props.addressState}</p>
                         </div>
                     </div>

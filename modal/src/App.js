@@ -1,4 +1,4 @@
-import './App.css';
+// import './App.css';
 import ArticleList from './components/ArticleList';
 import {useEffect} from 'react';
 import {useState} from 'react';

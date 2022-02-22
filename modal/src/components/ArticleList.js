@@ -13,7 +13,14 @@ class ArticleList extends React.Component {
                 <SearchBar />
                 <div>
                     {this.props.events.map(function(events, i){
-                        return <Article key={i} name = {events.msnfp_name} description = {events.msnfp_description} id = {events.msnfp_eventid} city = {events.msnfp_map_city}/>
+                        return <Article key={i} 
+                                        name = {events.msnfp_name} 
+                                        description = {events.msnfp_description} 
+                                        id = {events.msnfp_eventid} 
+                                        city = {events.msnfp_map_city}
+                                        state = {events.msnfp_stateorprovince} 
+                                        startTime = {events.new_starttime}
+                                        endTime = {events.new_endtime}/>
                     })}
                 </div>
             </div>
