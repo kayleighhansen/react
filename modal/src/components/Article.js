@@ -149,7 +149,6 @@ class Article extends React.Component {
         } else {
             this.timeDay = "PM";
             this.hour = this.hour - 12;
-            console.log(this.hour);
         }
 
     // Display the End Time
@@ -176,15 +175,25 @@ class Article extends React.Component {
 
         // volunteers
 
+        this.locationName = this.props.location;
+
+        console.log(this.props.volunteerCapacity);
+
+        this.volunteersNeeded = false;
+
         if(this.props.volunteerCapacity > 0 || this.props.volunteerCapacity != null) {
             this.volunteersNeeded = true;
+
+            console.log(this.volunteersNeeded);
+
+            this.volunteerContact = this.props.volunteersContactName;
+            this.volunteerEmail = this.props.volunteersContactPhone;
+            this.volunteerPhone = this.props.volunteerContactPhone;
         }
 
-        this.volunteersNeeded = this.props.capacity;
-        this.interestedVolunteering = this.props.volunteersNeeded;
-        this.volunteerContact = this.props.volunteersContactName;
-        this.volunteerEmail = this.props.volunteersContactPhone;
-        this.volunteerPhone = this.props.volunteerContactPhone;
+        // this.volunteersNeeded = this.props.capacity;
+        // this.interestedVolunteering = this.props.volunteersNeeded;
+        
 
         // sidebar
         this.website = this.props.locationWebsite;
@@ -301,13 +310,13 @@ class Article extends React.Component {
                             </div>
 
                             <div>
-                                <h3>{this.volunteersNeeded = false ? '' : 'Volunteers'}</h3>
+                                <h3>{this.volunteersNeeded = true ? '' : 'Volunteers'}</h3>
 
-                                <p>{this.volunteersNeeded = false ? '' : 'Calling all amazing people wanting to do amazing things! If you are interested in volunteering for this event, please contact:'}</p>
+                                {/* <p>{this.volunteersNeeded = false ? '' : 'Calling all amazing people wanting to do amazing things! If you are interested in volunteering for this event, please contact:'}</p>
 
                                 <p>{this.volunteersNeeded = false ? '' : this.props.volunteerContactName}</p>
                                 <p>{this.volunteersNeeded = false ? '' : this.props.volunteerContactEmail}</p>
-                                <p>{this.volunteersNeeded = false ? '' : this.props.volunteerContactPhone}</p>
+                                <p>{this.volunteersNeeded = false ? '' : this.props.volunteerContactPhone}</p> */}
                             </div>
                         </div>
 
@@ -331,12 +340,10 @@ class Article extends React.Component {
                                     <b>LOCATION</b>
                                 </p>
                                 <p style={this.modalStyle.infoBoxText}>
-                                    {this.props.location}
+                                    {this.locationName} 
                                 </p>
                                 <p style={this.modalStyle.infoBoxText}>
-                                    <a href={this.props.addressGoogleMaps} style={this.modalStyle.modalLink}>
-                                        {this.props.addressStreet} {this.props.addresCity} {this.props.addressState} {this.props.addressZip} {this.props.addressCountry}
-                                    </a>
+                                    {this.props.addressStreet} {this.props.addressCity} {this.props.addressState} {this.props.addressZipCode} {this.props.addressCountry}
                                 </p>
                                 <p style={this.modalStyle.infoBoxText}>
                                     <a href={this.website} style={this.modalStyle.modalLink}>
