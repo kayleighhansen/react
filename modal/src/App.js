@@ -32,7 +32,7 @@ function App() {
     if (articleData){
       return(
         <div>
-          <h1>Upcoming Events</h1>
+          
           <ArticleList events = { articleData }/>
         </div>
       );

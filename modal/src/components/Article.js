@@ -135,8 +135,11 @@ class Article extends React.Component {
         this.months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
         this.abbreviated = (this.months[this.props.startTime.substring(5, 7) - 1]).substring(0, 3).toUpperCase();
+        this.monthName = this.months[this.props.startTime.substring(5, 7) - 1];
         this.eventDay = this.props.startTime.substring(8, 10);
+        this.eventYear = this.props.startTime.substring(0, 4);
 
+        this.start_time = this.props.startTime;
         this.hour = parseInt(this.props.startTime.substring(11, 13));
         this.minutes = this.props.startTime.substring(14, 16);
 
@@ -150,6 +153,7 @@ class Article extends React.Component {
         }
 
     // Display the End Time
+        this.end_time = this.props.endTime;
         this.end_hour = parseInt(this.props.endTime.substring(11, 13));
         this.end_minutes = this.props.endTime.substring(14, 16);
 
@@ -171,7 +175,12 @@ class Article extends React.Component {
         this.cost = this.props.cost;
 
         // volunteers
-        this.volunteersNeeded = this.props.volunteersNeeded;
+
+        if(this.props.volunteerCapacity > 0 || this.props.volunteerCapacity != null) {
+            this.volunteersNeeded = true;
+        }
+
+        this.volunteersNeeded = this.props.capacity;
         this.interestedVolunteering = this.props.volunteersNeeded;
         this.volunteerContact = this.props.volunteersContactName;
         this.volunteerEmail = this.props.volunteersContactPhone;
@@ -227,8 +236,8 @@ class Article extends React.Component {
                                 <b>{this.eventDay} {this.abbreviated}</b>
                             </p>
                             <p className="detail">{this.hour}:{this.minutes} - {this.end_hour}:{this.end_minutes} { this.end_timeDay }</p>
-                            <p className="detail">{this.props.city}, {this.props.state}</p>
-                            <p className="detail location">{this.props.addressStreet} {this.props.addressCity} {this.props.addressState}</p>
+                            <p className="detail">{this.props.location}</p>
+                            <p className="detail location">{this.props.addressStreet} {this.props.addressCity} {this.props.addressState} {this.props.addressCountry} {this.props.addressZipCode}</p>
                         </div>
                     </div>
                     <div style={this.mainStyle.eventsButtonsRow}>
@@ -270,7 +279,7 @@ class Article extends React.Component {
                                     {this.hasCheckIn = '' ? this.hasCheckIn + '- Check in' : ''}
                                 </p>
                                 <p>
-                                    {this.props.eventStartTime} - {this.props.eventEndTime} <span className="dash">-</span>{" "}
+                                    {this.hour}:{this.minutes} - {this.end_hour}:{this.end_minutes} {this.end_timeDay} <span className="dash">-</span>{" "}
                                     <span className="added-detail">Event</span>
                                 </p>
                             </div>
@@ -292,13 +301,13 @@ class Article extends React.Component {
                             </div>
 
                             <div>
-                                <h3>{this.volunteersNeeded = "no" ? '' : 'Volunteers'}</h3>
+                                <h3>{this.volunteersNeeded = false ? '' : 'Volunteers'}</h3>
 
-                                <p>{this.interestedVolunteering = "null" ? '' : 'If you are interested in volunteering for this event, please contact:'}</p>
+                                <p>{this.volunteersNeeded = false ? '' : 'Calling all amazing people wanting to do amazing things! If you are interested in volunteering for this event, please contact:'}</p>
 
-                                <p>{this.volunteerContact = "null" ? '' : this.props.volunteersContactName}</p>
-                                <p>{this.volunteerEmail = "null" ? '' : this.props.volunteersContactEmail}</p>
-                                <p>{this.volunteerPhone = "null" ? '' : this.props.volunteersContactPhone}</p>
+                                <p>{this.volunteersNeeded = false ? '' : this.props.volunteerContactName}</p>
+                                <p>{this.volunteersNeeded = false ? '' : this.props.volunteerContactEmail}</p>
+                                <p>{this.volunteersNeeded = false ? '' : this.props.volunteerContactPhone}</p>
                             </div>
                         </div>
 
@@ -307,14 +316,14 @@ class Article extends React.Component {
                                 <p style={this.modalStyle.infoBoxTitle}>
                                     <b>DATE</b>
                                 </p>
-                                <p style={this.modalStyle.infoBoxText}>{this.props.eventMonth} {this.props.eventDay}, {this.props.eventYear} </p>
+                                <p style={this.modalStyle.infoBoxText}>{this.monthName} {this.eventDay}, {this.eventYear} </p>
                             </div>
 
                             <div style={this.modalStyle.infoBox}>
                                 <p style={this.modalStyle.infoBoxTitle}>
                                     <b>TIME</b>
                                 </p>
-                                <p style={this.modalStyle.infoBoxText}>{this.props.eventStartTime} - {this.props.eventEndTime} {this.props.timeZone} </p>
+                                <p style={this.modalStyle.infoBoxText}>{this.hour}:{this.minutes} - {this.end_hour}:{this.end_minutes} {this.end_timeDay} </p>
                             </div>
 
                             <div style={this.modalStyle.infoBox}>
