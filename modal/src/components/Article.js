@@ -6,6 +6,7 @@ class Article extends React.Component {
         super(props);
 
 
+    // Set style of the article
         this.mainStyle = {
             article: {
                 margin: "40px 40px",
@@ -50,6 +51,7 @@ class Article extends React.Component {
             }
         };
 
+    // Set the styles of the modal
         this.modalStyle = {
             overlay: {
                 backgroundColor: "rgba(0, 0, 0,0.5)"
@@ -174,9 +176,6 @@ class Article extends React.Component {
         this.cost = this.props.cost;
 
         // volunteers
-
-        this.locationName = this.props.location;
-
         console.log(this.props.volunteerCapacity);
 
         this.volunteersNeeded = false;
@@ -184,19 +183,18 @@ class Article extends React.Component {
         if(this.props.volunteerCapacity > 0 || this.props.volunteerCapacity != null) {
             this.volunteersNeeded = true;
 
-            console.log(this.volunteersNeeded);
+            // console.log(this.volunteersNeeded);
 
             this.volunteerContact = this.props.volunteersContactName;
             this.volunteerEmail = this.props.volunteersContactPhone;
             this.volunteerPhone = this.props.volunteerContactPhone;
         }
 
-        // this.volunteersNeeded = this.props.capacity;
-        // this.interestedVolunteering = this.props.volunteersNeeded;
-        
-
         // sidebar
         this.website = this.props.locationWebsite;
+
+        // address
+        this.locationName = this.props.location;
 
         // set initial state
         this.state = {
@@ -310,13 +308,13 @@ class Article extends React.Component {
                             </div>
 
                             <div>
-                                <h3>{this.volunteersNeeded = true ? '' : 'Volunteers'}</h3>
+                                <h3>{this.volunteersNeeded == true ? 'Volunteers' : ''}</h3>
 
-                                {/* <p>{this.volunteersNeeded = false ? '' : 'Calling all amazing people wanting to do amazing things! If you are interested in volunteering for this event, please contact:'}</p>
+                                <p>{this.volunteersNeeded == true ? 'Calling all amazing people wanting to do amazing things! If you are interested in volunteering for this event, please contact:' : ''}</p>
 
-                                <p>{this.volunteersNeeded = false ? '' : this.props.volunteerContactName}</p>
-                                <p>{this.volunteersNeeded = false ? '' : this.props.volunteerContactEmail}</p>
-                                <p>{this.volunteersNeeded = false ? '' : this.props.volunteerContactPhone}</p> */}
+                                <p>{this.volunteersNeeded == true ? this.props.volunteerContactName : ''}</p>
+                                <p>{this.volunteersNeeded == true ? this.props.volunteerContactEmail : ''}</p>
+                                <p>{this.volunteersNeeded == true ? this.props.volunteerContactPhone : ''}</p>  
                             </div>
                         </div>
 
