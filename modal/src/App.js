@@ -9,7 +9,7 @@ function App() {
 
   useEffect(() => {
     setArticleData(null);
-    fetch('http://hoopcamp-dev.azurewebsites.net/events/getEvents', {
+    fetch('https://hoopcamp-dev.azurewebsites.net/events/getEvents', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
