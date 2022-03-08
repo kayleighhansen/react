@@ -1,10 +1,8 @@
 import React from 'react';
-
 class Modal extends React.Component {
 
 	constructor(props) {
 		super(props);
-		// console.log(props);
 
 		this.outerStyle = {
 			position: "fixed",
@@ -26,10 +24,9 @@ class Modal extends React.Component {
 				backgroundColor: "#fff",
 				margin: "40px auto",
 				borderRadius: 3,
-				zIndex: 2,
+				zIndex: 1,
 				textAlign: "left",
 				boxShadow: "0 20px 30px rgba(0, 0, 0, 0.2)",
-				...this.props.style.modal
 			},
 			overlay: {
 				position: "fixed",
@@ -40,28 +37,25 @@ class Modal extends React.Component {
 				width: "100%",
 				height: "100%",
 				backgroundColor: "rgba(0,0,0,0.5)",
-				...this.props.style.overlay
+				zIndex: "-1"
+			},
+			modalReal: {
+				backgroundColor: "white"
 			}
+
 		};
 	}
 
 	// render modal
 	render() {
 		return (
-			<div
-				style={{
-					...this.outerStyle,
-					display: this.props.isModalOpen ? "block" : "none"
-				}}
-			>
+			<div style={{ ...this.outerStyle, display: this.props.isModalOpen ? "block" : "none"}}>
 				<div style={this.style.overlay} onClick={this.props.closeModal} />
 				<div onClick={this.props.closeModal} />
-				<div style={this.style.modal}>{this.props.children}</div>
+				<div style={this.style.modalReal}>{this.props.children}</div>
 			</div>
 		);
 	}
 }
-
-
 
 export default Modal;

@@ -1,38 +1,261 @@
-.App {
+.page-title {
   text-align: center;
+  font-size: 45px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.loading-screen {
+  text-align: center;
+  font-style: italic;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.searchbar-container {
+  display:flex;
+  justify-content: center;  
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.searchbar-form {
+  background-color: #f0f0f0;
+  border: 1px solid #e1e1e1;
+  width: 100%;
+  padding: 20px;
+  margin: 0px 40px 0px 40px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.searchbar-input {
+  border:none;
+  background-color: white;
+  font-size: 18px;
+  padding: 5px;
+  width: 70%;
+  margin: 0px 10px;
+}
+
+.searchbar-input:focus {
+  outline: none;
+}
+
+.searchbar-button {
+  background-color: #317fbb;
   color: white;
+  border: none;
+  padding: 0px 9px;
 }
 
-.App-link {
-  color: #61dafb;
+.articleStyle-article {
+  margin: 40px 40px;
+  border: 1px solid #e1e1e1;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.articleStyle-iconBar {
+  color: #317fbb;
+}
+
+.articleStyle-allEventsDetails {
+  display: grid;
+  grid-template-columns: 80% 20%;
+}
+
+.articleStyle-eventDescription {
+  padding: 0px 20px;
+  border-right: 1px solid #e1e1e1;
+}
+
+.articleStyle-eventHeader {
+  margin-bottom: 0px;
+}
+
+.articleStyle-eventDescriptionTitle {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 35px;
+}
+
+.articleStyle-eventTitleCity {
+  font-weight: 200;
+}
+
+.articleStyle-eventDescriptionText {
+  font-size: 14px;
+}
+
+.articleStyle-eventType {
+  margin-left: -7px;
+  padding-left: 6px;
+  margin-top: 4px;
+  font-size: 18px;
+  color: #317fbb;
+  border-left: 2px solid #317fbb;
+}
+
+.articleStyle-eventDetailsSidebar {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  grid-template-rows: 35px 30px 1fr;
+  font-size: 18px;
+  padding: 20px 20px;
+}
+
+.articleStyle-iconBar {
+  margin-top: 10px;
+}
+
+.articleStyle-eventDetailsDate {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.articleStyle-eventDetailsTime {
+  padding-bottom: 0;
+  font-size: 14px;
+}
+
+.articleStyle-eventDetailsLocation {
+  font-size: 12px;
+  line-height: 18px;
+}
+.articleStyle-activeEventsButtonsRow {
+  display:flex;
+}
+
+.articleStyle-eventButtonsRow {
+  background-color: #f0f0f0;
+  display: flex;
+}
+
+.articleStyle-eventButtonsRow {
+  display: flex;
+}
+
+.article-Style-button-share {
+  margin-left: auto;
+}
+
+.articleStyle-button {
+  background-color: white;
+  border: 0;
+  padding: 12px 15px;
+  margin: 10px 10px;
+  color: black;
+  display: block;
+  border-radius: 3;
+  transition: 0.3s;
+}
+
+.articleStyle-button:hover {
+  background-color: #317fbb;
+  color:white !important;
+}
+
+svg {
+  font-size: 15px;
+}
+
+@media only screen and (max-width: 850px) {
+  .articleStyle-eventDetailsSidebar {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    grid-template-rows: 45px 40px 1fr;
+    font-size: 18px;
+    padding: 20px 20px;
   }
 }
+
+/* // Set the styles of the modal
+        // this.modalStyle = {
+        //     overlay: {
+        //         backgroundColor: "rgba(0, 0, 0,0.5)"
+        //     },
+        //     whiteButton: {
+        //         backgroundColor: "gray",
+        //         border: 0,
+        //         padding: "12px 15px",
+        //         color: "white",
+        //         display: "block",
+        //         borderRadius: 3
+        //     },
+        //     preferredButton: {
+        //         backgroundColor: "black",
+        //         border: 0,
+        //         padding: "12px 15px",
+        //         color: "white",
+        //         display: "block",
+        //         borderRadius: 3,
+        //         marginRight: "10px",
+        //     },
+        //     totalEventDetails: {
+        //         display: "grid",
+        //         gridTemplateColumns: "70% 30%"
+        //     },
+        //     modalLink: {
+        //         color: "blue",
+        //         textDecoration: "none",
+        //         fontStyle: "italic"
+        //     },
+        //     buttonRow: {
+        //         display: "flex",
+        //     },
+        //     closeBtn: {
+        //         backgroundColor: "black",
+        //         border: 0,
+        //         padding: "12px 15px",
+        //         color: "white",
+        //         display: "block",
+        //         borderRadius: 3,
+        //         marginLeft: "auto",
+        //     },
+        //     generalDetails: {
+        //         marginTop: "60px",
+        //         marginLeft: "10px",
+        //     },
+        //     specializedDetails: {
+        //         marginRight: "30px"
+        //     },
+        //     modalTitle: {
+        //         fontWeight: "100",
+        //     },
+        //     infoBox: {
+        //         backgroundColor: "rgb(244 244 244)",
+        //         padding: "5px 10px",
+        //         margin: "10px 0px 10px 0px",
+        //     },
+        //     infoBoxTitle: {
+        //         marginBottom: "0",
+        //         marginLeft: "10px",
+        //         fontSize: "15px"
+        //     },
+        //     infoBoxText: {
+        //         marginTop: "10px",
+        //         marginLeft: "10px",
+        //         fontSize: "12px"
+        //     },
+        //     socialBox: {
+        //         backgroundColor: "white",
+        //         height: "50px",
+        //         width: "50px",
+        //         marginRight: "5px",
+        //         marginTop: "10px",
+        //         marginBottom: "10px",
+        //     },
+        //     socialBoxContainer: {
+        //         display: "flex",
+        //         justifyContent: "center"
+        //     }
+        // }; */
+
+@media only screen and (max-width: 600px) {
+
+  .articleStyle-allEventsDetails {
+    display: block;
+  }
+
+  .page-title {
+    text-align: center;
+    font-size: 35px;
+    margin: 20px;
+  }
+
+}
+

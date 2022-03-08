@@ -1,137 +1,20 @@
 import Modal from './Modal';
 import React from 'react';
 
+import { faCalendarDays, faClock, faLocationDot, faBasketball, faEye, faShareNodes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import '../App.css';
+
 class Article extends React.Component {
     constructor(props) {
         super(props);
 
+    
 
-    // Set style of the article
-        this.mainStyle = {
-            article: {
-                margin: "40px 40px",
-                border: "1px solid lightgray"
-            },
-            allEventDetails: {
-                display: "grid",
-                gridTemplateColumns: "80% 20%"
-            },
-            activeEventsButtonsRow: {
-                display: "flex"
-            },
-            shareBtnContainer: {
-                marginLeft: "auto"
-            },
-            eventsButtonsRow: {
-                backgroundColor: "#e8e8e8",
-                display: "flex"
-            },
-            eventDescription: {
-                padding: "0px 20px",
-                borderRight: "1px solid lightgray"
-            },
-            eventDetails: {
-                padding: "0px 20px"
-            },
-            eventDescriptionTitle: {
-                color: "black",
-                textDecoration: "none",
-                cursor: "pointer",
-                fontSize: "40px",
-                fontWeight: "100",
-            },
-            button: {
-                backgroundColor: "white",
-                border: 0,
-                padding: "12px 15px",
-                margin: "10px 10px",
-                color: "black",
-                display: "block",
-                borderRadius: 3
-            }
-        };
-
-    // Set the styles of the modal
-        this.modalStyle = {
-            overlay: {
-                backgroundColor: "rgba(0, 0, 0,0.5)"
-            },
-            whiteButton: {
-                backgroundColor: "gray",
-                border: 0,
-                padding: "12px 15px",
-                color: "white",
-                display: "block",
-                borderRadius: 3
-            },
-            preferredButton: {
-                backgroundColor: "black",
-                border: 0,
-                padding: "12px 15px",
-                color: "white",
-                display: "block",
-                borderRadius: 3,
-                marginRight: "10px",
-            },
-            totalEventDetails: {
-                display: "grid",
-                gridTemplateColumns: "70% 30%"
-            },
-            modalLink: {
-                color: "blue",
-                textDecoration: "none",
-                fontStyle: "italic"
-            },
-            buttonRow: {
-                display: "flex",
-            },
-            closeBtn: {
-                backgroundColor: "black",
-                border: 0,
-                padding: "12px 15px",
-                color: "white",
-                display: "block",
-                borderRadius: 3,
-                marginLeft: "auto",
-            },
-            generalDetails: {
-                marginTop: "60px",
-                marginLeft: "10px",
-            },
-            specializedDetails: {
-                marginRight: "30px"
-            },
-            modalTitle: {
-                fontWeight: "100",
-            },
-            infoBox: {
-                backgroundColor: "rgb(244 244 244)",
-                padding: "5px 10px",
-                margin: "10px 0px 10px 0px",
-            },
-            infoBoxTitle: {
-                marginBottom: "0",
-                marginLeft: "10px",
-                fontSize: "15px"
-            },
-            infoBoxText: {
-                marginTop: "10px",
-                marginLeft: "10px",
-                fontSize: "12px"
-            },
-            socialBox: {
-                backgroundColor: "white",
-                height: "50px",
-                width: "50px",
-                marginRight: "5px",
-                marginTop: "10px",
-                marginBottom: "10px",
-            },
-            socialBoxContainer: {
-                display: "flex",
-                justifyContent: "center"
-            }
-        };
+    // Display the Event Type
+        this.eventTypeArray = ["Day Camp", "Networking Event", "Fundraiser", "Drop In Game", "Half Time Show", "Other"];
+        this.displayType = this.eventTypeArray[this.props.type.toString().substring(8, 9) - 1];
 
     // Display the Start Time 
         this.months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -158,6 +41,7 @@ class Article extends React.Component {
         this.end_hour = parseInt(this.props.endTime.substring(11, 13));
         this.end_minutes = this.props.endTime.substring(14, 16);
 
+        // set AM or PM, display right right hour
         if(this.end_hour <= 12) {
             this.end_timeDay = "AM";
             
@@ -171,20 +55,20 @@ class Article extends React.Component {
         this.hasMotto = this.props.motto;
         this.hasCheckIn = this.props.eventCheckInTime;
 
+        // location
+
+        this.locationDescriptionExists = false;
+
         // price
         this.hasIncludedinPrice = this.props.includedInPrice;
         this.cost = this.props.cost;
 
         // volunteers
-        console.log(this.props.volunteerCapacity);
-
         this.volunteersNeeded = false;
 
+        // display volunteer contact info
         if(this.props.volunteerCapacity > 0 || this.props.volunteerCapacity != null) {
             this.volunteersNeeded = true;
-
-            // console.log(this.volunteersNeeded);
-
             this.volunteerContact = this.props.volunteersContactName;
             this.volunteerEmail = this.props.volunteersContactPhone;
             this.volunteerPhone = this.props.volunteerContactPhone;
@@ -205,6 +89,8 @@ class Article extends React.Component {
         // bind functions
         this.closeModal = this.closeModal.bind(this);
         this.openModal = this.openModal.bind(this);
+        this.registerEvent = this.registerEvent.bind(this);
+
     }
 
     // close modal (set isModalOpen, true)
@@ -221,47 +107,58 @@ class Article extends React.Component {
         });
     }
 
+    // set eent id in session storage
+    registerEvent(eventId) {
+        // set session storage
+        sessionStorage.setItem('eventId', JSON.stringify(eventId));
+
+        // check session storage for clientid before redirecting
+        if(sessionStorage.getItem('clientId') != null) {
+            console.log("redirect to sign in page");
+        } else {
+            console.log("redirect to event registration page");
+        }
+    }
+
     // render app
     render() {
         return (
             <div>
-                <article style={this.mainStyle.article}>
-                    <div style={this.mainStyle.allEventDetails}>
-                        <div style={this.mainStyle.eventDescription}>
-                            <h2>
-                                <a onClick={this.openModal} style={this.mainStyle.eventDescriptionTitle}>
-                                    {this.props.name}
-                                </a>
+                <article className="articleStyle-article">
+                    <div className="articleStyle-allEventsDetails">
+                        <div className="articleStyle-eventDescription">
+                            <h2 className="articleStyle-eventHeader">
+                                <a onClick={this.openModal} href="#" className="articleStyle-eventDescriptionTitle">{this.props.name}<span className="articleStyle-eventTitleCity">, {this.props.addressCity} </span></a>
                             </h2>
-                            <p className="description">
-                                {this.props.description}
-                            </p>
+                            <p className="articleStyle-eventDescriptionText">{this.props.description}</p>
+                            {/* <p className="articleStyle-eventDescriptionText articleStyle-eventType"> {this.displayType}</p> */}
 
                         </div>
-                        <div style={this.mainStyle.eventDetails}>
-                            <p>
-                                <b>{this.eventDay} {this.abbreviated}</b>
-                            </p>
-                            <p className="detail">{this.hour}:{this.minutes} - {this.end_hour}:{this.end_minutes} { this.end_timeDay }</p>
-                            <p className="detail">{this.props.location}</p>
-                            <p className="detail location">{this.props.addressStreet} {this.props.addressCity} {this.props.addressState} {this.props.addressCountry} {this.props.addressZipCode}</p>
+                        <div className="articleStyle-eventDetailsSidebar">
+                            <p className="articleStyle-iconBar calendarDays"><FontAwesomeIcon icon={faCalendarDays}/></p>
+                            <p className="articleStyle-eventDetailsDate"> <b>{this.eventDay} {this.abbreviated}</b></p>
+
+                            <p className="articleStyle-iconBar clock"><FontAwesomeIcon icon={faClock}/></p>
+                            <p className="articleStyle-eventDetailsTime"> <b>{this.hour}:{this.minutes} - {this.end_hour}:{this.end_minutes} { this.end_timeDay }</b></p>
+
+                            {/* <p className="articleStyle-iconBar locationDot"><FontAwesomeIcon icon={faLocationDot}/></p>
+                            <p className="articleStyle-eventDetailsLocation"> {this.props.location} {this.props.addressStreet} {this.props.addressCity} {this.props.addressState} {this.props.addressCountry} {this.props.addressZipCode}</p> */}
                         </div>
                     </div>
-                    <div style={this.mainStyle.eventsButtonsRow}>
-                        <div style={this.mainStyle.activeEventsButtonsRow}>
-                            <div >
-                                <button style={this.mainStyle.button} onClick={this.openModal}>
-                                    {" "}
-                                    View Details
-                                </button>
+                    <div className="articleStyle-eventButtonsRow">
+                        <div className="articleStyle-activeEventsButtonsRow">
+                            <div className="articleStyle-buttonContainer">
+                                <button className="articleStyle-button" onClick={this.openModal}>{" "} <FontAwesomeIcon icon={faEye}/> View Details</button>
                             </div>
-                            <div>
-                                <button style={this.mainStyle.button} href=""> Register</button>
+                            <div className="articleStyle-buttonContainer">
+                                <button className="articleStyle-button" onClick={() => this.registerEvent(this.props.id)}><FontAwesomeIcon icon={faBasketball}/> Register </button>
                             </div>
                         </div>
-                        <div style={this.mainStyle.shareBtnContainer}>
+                        <div className="articleStyle-buttonContainer article-Style-button-share">
                             <div>
-                                <button style={this.mainStyle.button}>Share</button>
+                                <form action="https://www.facebook.com/Hoop.Camp">
+                                    <button type="submit" className="articleStyle-button"><FontAwesomeIcon icon={faShareNodes}/> Share</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -269,122 +166,68 @@ class Article extends React.Component {
 
                 <Modal
                     isModalOpen={this.state.isModalOpen}
-                    closeModal={this.closeModal}
-                    style={this.modalStyle}
-                >
-                    <div style={this.modalStyle.totalEventDetails}>
-                        <div style={this.modalStyle.specializedDetails}>
-                            <div>
-                                <h1 style={this.modalStyle.modalTitle}>{this.props.name}</h1>
+                    closeModal={this.closeModal}>
 
-                                <h3>{this.hasMotto ? this.hasMotto : ''}</h3>
-
-                                <p>
-                                    {this.props.description}
-                                </p>
-                                <p>
-                                    {this.hasCheckIn = '' ? this.hasCheckIn + '- Check in' : ''}
-                                </p>
-                                <p>
-                                    {this.hour}:{this.minutes} - {this.end_hour}:{this.end_minutes} {this.end_timeDay} <span className="dash">-</span>{" "}
-                                    <span className="added-detail">Event</span>
-                                </p>
+                    <div className="modalStyle-totalEventDetails">
+                        <div className="modalStyle-specializedDetails">
+                            <div className="modalStyle-mainContentContainer">
+                                <h1 className="modalStyle-mainTitle" >{this.props.name}</h1>
+                                <h3 className="modalStyle-mainMotto">{this.hasMotto ? this.hasMotto : ''}</h3>
+                                <p className="modalStyle-mainDescription">{this.props.description} </p>
+                                {/* <p className="modalStyle-checkIn">{this.hasCheckIn = '' ? this.hasCheckIn + '- Check in' : ''}</p> */}
+                                {/* <p className="modalStyle-mainSchedule">{this.hour}:{this.minutes} - {this.end_hour}:{this.end_minutes} {this.end_timeDay} <span className="dash">-</span>{" "}<span className="added-detail">Event</span></p> */}
                             </div>
 
-                            <div>
-                                <p>
-                                    {this.props.locationDescription}
-                                </p>
+                            <div className="modalStyle-locationDescriptionContainer">
+                                <p className="modalStyle-location">{this.props.location}</p>
+                                <p className="modalStyle-locationDescription">{this.locationDescriptionExists === true ? this.props.locationDescription : ''}</p>
                             </div>
 
-                            <div>
-                                <h3>Price</h3>
-
-                                <p>{this.cost !== "0.00" ? this.cost : 'FREE'} </p>
-
-                                <p>{this.hasIncludedinPrice !== "null" ? this.hasIncludedinPrice : ''}</p>
-
-                                <p>{this.needsHelp = "0.00" ? '' : 'If you need help paying for a participation fee, please contact us at email@email.com'} </p>
+                            <div className="modalStyle-priceDescriptionContainer">
+                                <h3 className="modalStyle-priceTitle">Price</h3>
+                                <p className="modalStyle-priceNumber">{this.cost !== "0.00" ? this.cost : 'FREE'} </p>
+                                <p className="modalStyle-priceIncluded">{this.hasIncludedinPrice !== "null" ? this.hasIncludedinPrice : ''}</p>
+                                <p className="modalStyle-priceHelp">{this.needsHelp = "0.00" ? '' : 'If you need help paying for a participation fee, please contact us at email@email.com'} </p>
                             </div>
 
-                            <div>
-                                <h3>{this.volunteersNeeded == true ? 'Volunteers' : ''}</h3>
-
-                                <p>{this.volunteersNeeded == true ? 'Calling all amazing people wanting to do amazing things! If you are interested in volunteering for this event, please contact:' : ''}</p>
-
-                                <p>{this.volunteersNeeded == true ? this.props.volunteerContactName : ''}</p>
-                                <p>{this.volunteersNeeded == true ? this.props.volunteerContactEmail : ''}</p>
-                                <p>{this.volunteersNeeded == true ? this.props.volunteerContactPhone : ''}</p>  
+                            <div className="modalStyle-volunteersDescriptionContainer">
+                                <h3 className="modalStyle-volunteersDescriptionTitle">{this.volunteersNeeded === true ? 'Volunteers' : ''}</h3>
+                                <p className="modalStyle-volunteersDescriptionText">{this.volunteersNeeded === true ? 'Calling all amazing people wanting to do amazing things! If you are interested in volunteering for this event, please contact:' : ''}</p>
+                                <p className="modalStyle-volunteersDescription-ContactName">{this.volunteersNeeded === true ? this.props.volunteerContactName : ''}</p>
+                                <p className="modalStyle-volunteersDescription-ContactEmail">{this.volunteersNeeded === true ? this.props.volunteerContactEmail : ''}</p>
+                                <p className="modalStyle-volunteersDescription-ContactPhone">{this.volunteersNeeded === true ? this.props.volunteerContactPhone : ''}</p>  
                             </div>
                         </div>
 
-                        <div style={this.modalStyle.generalDetails}>
-                            <div style={this.modalStyle.infoBox}>
-                                <p style={this.modalStyle.infoBoxTitle}>
-                                    <b>DATE</b>
-                                </p>
-                                <p style={this.modalStyle.infoBoxText}>{this.monthName} {this.eventDay}, {this.eventYear} </p>
+                        <div className="modalStyle-generalDetails">
+                            <div className="modalStyle-infoBox">
+                                <p className="modalStyle-infoBoxTitle"><b>DATE</b></p>
+                                <p className="modalStyle=infoBoxText">{this.monthName} {this.eventDay}, {this.eventYear} </p>
                             </div>
 
-                            <div style={this.modalStyle.infoBox}>
-                                <p style={this.modalStyle.infoBoxTitle}>
-                                    <b>TIME</b>
-                                </p>
-                                <p style={this.modalStyle.infoBoxText}>{this.hour}:{this.minutes} - {this.end_hour}:{this.end_minutes} {this.end_timeDay} </p>
+                            <div className="modalStyle-infoBox">
+                                <p className="modalStyle-infoBoxTitle"><b>TIME</b></p>
+                                <p className="modalStyle=infoBoxText">{this.hour}:{this.minutes} - {this.end_hour}:{this.end_minutes} {this.end_timeDay} </p>
                             </div>
 
-                            <div style={this.modalStyle.infoBox}>
-                                <p style={this.modalStyle.infoBoxTitle}>
-                                    <b>LOCATION</b>
-                                </p>
-                                <p style={this.modalStyle.infoBoxText}>
-                                    {this.locationName} 
-                                </p>
-                                <p style={this.modalStyle.infoBoxText}>
-                                    {this.props.addressStreet} {this.props.addressCity} {this.props.addressState} {this.props.addressZipCode} {this.props.addressCountry}
-                                </p>
-                                <p style={this.modalStyle.infoBoxText}>
-                                    <a href={this.website} style={this.modalStyle.modalLink}>
-                                        {this.props.location} Website
-                                    </a>
-                                </p>
+                            <div className="modalStyle-infoBox">
+                                <p className="modalStyle-infoBoxTitle"><b>LOCATION</b></p>
+                                <p className="modalStyle=infoBoxText">{this.locationName}</p>
+                                <p className="modalStyle=infoBoxText">{this.props.addressStreet} {this.props.addressCity} {this.props.addressState} {this.props.addressZipCode} {this.props.addressCountry}</p>
+                                <p className="modalStyle=infoBoxText"><a href={this.website} className="modalStyle-locationWebsite">{this.props.location} Website</a></p>
                             </div>
 
-                            <div style={this.modalStyle.infoBox}>
-                                <p style={this.modalStyle.infoBoxTitle}>
-                                    <b>COST</b>
-                                </p>
-
-                                <p style={this.modalStyle.infoBoxText}>{this.cost !== "0.00" ? '$' + this.cost : 'FREE'} </p>
+                            <div className="modalStyle-infoBox">
+                                <p className="modalStyle-infoBoxTitle"><b>COST</b></p>
+                                <p className="modalStyle=infoBoxText">{this.cost !== "0.00" ? this.cost : 'FREE'}</p>
                             </div>
-
-                            <div style={this.modalStyle.infoBox}>
-                                <p style={this.modalStyle.infoBoxTitle}>
-                                    <b>SHARE:</b>
-                                </p>
-
-                                <div style={this.modalStyle.socialBoxContainer}>
-                                    <div style={this.modalStyle.socialBox} className='facebook'></div>
-                                    <div style={this.modalStyle.socialBox} className='instagram'></div>
-                                    <div style={this.modalStyle.socialBox} className='linkedIn'></div>
-                                    <div style={this.modalStyle.socialBox} className='email'></div>
-                                    <div style={this.modalStyle.socialBox} className='message'></div>
-                                </div>
-                            </div>
-
                         </div>
                     </div>
-                    <div style={this.modalStyle.buttonRow}>
-                        <button style={this.modalStyle.preferredButton}>Register for this Event</button>
-                        <button style={this.modalStyle.whiteButton}>Sponsor A Player</button>
-                        <button
-                            style={this.modalStyle.closeBtn}
-                            onClick={this.closeModal}
-                        >
-                            X
-                        </button>
+                    <div className="modalStyle-buttonRow">
+                        <button className="modalStyle-preferredButton">Register for this Event</button>
+                        <button className="modalStyle-whiteButton">Sponsor A Player</button>
+                        <button className="modalStyle-closeButton" onClick={this.closeModal} > X </button>
                     </div>
-
                 </Modal>
             </div>
         );
