@@ -1,7 +1,7 @@
 import Modal from './Modal';
 import React from 'react';
 
-import { faCalendarDays, faClock, faLocationDot, faBasketball, faEye, faShareNodes } from "@fortawesome/free-solid-svg-icons";
+import { faCalendarDays, faClock, faXmarkCircle, faBasketball, faEye, faShareNodes, faCircleDollarToSlot } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import '../App.css';
@@ -10,24 +10,24 @@ class Article extends React.Component {
     constructor(props) {
         super(props);
 
-    
-
     // Display the Event Type
         this.eventTypeArray = ["Day Camp", "Networking Event", "Fundraiser", "Drop In Game", "Half Time Show", "Other"];
         this.displayType = this.eventTypeArray[this.props.type.toString().substring(8, 9) - 1];
 
     // Display the Start Time 
+        // date
         this.months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
         this.abbreviated = (this.months[this.props.startTime.substring(5, 7) - 1]).substring(0, 3).toUpperCase();
         this.monthName = this.months[this.props.startTime.substring(5, 7) - 1];
         this.eventDay = this.props.startTime.substring(8, 10);
         this.eventYear = this.props.startTime.substring(0, 4);
 
+        // time
         this.start_time = this.props.startTime;
         this.hour = parseInt(this.props.startTime.substring(11, 13));
         this.minutes = this.props.startTime.substring(14, 16);
 
+        // AM or PM 
         if(this.hour < 12) {
             this.timeDay = "AM";
             
@@ -56,7 +56,6 @@ class Article extends React.Component {
         this.hasCheckIn = this.props.eventCheckInTime;
 
         // location
-
         this.locationDescriptionExists = false;
 
         // price
@@ -131,28 +130,18 @@ class Article extends React.Component {
                                 <a onClick={this.openModal} href="#" className="articleStyle-eventDescriptionTitle">{this.props.name}<span className="articleStyle-eventTitleCity">, {this.props.addressCity} </span></a>
                             </h2>
                             <p className="articleStyle-eventDescriptionText">{this.props.description}</p>
-                            {/* <p className="articleStyle-eventDescriptionText articleStyle-eventType"> {this.displayType}</p> */}
-
                         </div>
                         <div className="articleStyle-eventDetailsSidebar">
                             <p className="articleStyle-iconBar calendarDays"><FontAwesomeIcon icon={faCalendarDays}/></p>
                             <p className="articleStyle-eventDetailsDate"> <b>{this.eventDay} {this.abbreviated}</b></p>
-
                             <p className="articleStyle-iconBar clock"><FontAwesomeIcon icon={faClock}/></p>
                             <p className="articleStyle-eventDetailsTime"> <b>{this.hour}:{this.minutes} - {this.end_hour}:{this.end_minutes} { this.end_timeDay }</b></p>
-
-                            {/* <p className="articleStyle-iconBar locationDot"><FontAwesomeIcon icon={faLocationDot}/></p>
-                            <p className="articleStyle-eventDetailsLocation"> {this.props.location} {this.props.addressStreet} {this.props.addressCity} {this.props.addressState} {this.props.addressCountry} {this.props.addressZipCode}</p> */}
                         </div>
                     </div>
                     <div className="articleStyle-eventButtonsRow">
                         <div className="articleStyle-activeEventsButtonsRow">
-                            <div className="articleStyle-buttonContainer">
-                                <button className="articleStyle-button" onClick={this.openModal}>{" "} <FontAwesomeIcon icon={faEye}/> View Details</button>
-                            </div>
-                            <div className="articleStyle-buttonContainer">
-                                <button className="articleStyle-button" onClick={() => this.registerEvent(this.props.id)}><FontAwesomeIcon icon={faBasketball}/> Register </button>
-                            </div>
+                            <div className="articleStyle-buttonContainer"><button className="articleStyle-button" onClick={this.openModal}>{" "} <FontAwesomeIcon icon={faEye}/> View Details</button></div>
+                            <div className="articleStyle-buttonContainer"><button className="articleStyle-button" onClick={() => this.registerEvent(this.props.id)}><FontAwesomeIcon icon={faBasketball}/> Register </button></div>
                         </div>
                         <div className="articleStyle-buttonContainer article-Style-button-share">
                             <div>
@@ -174,8 +163,6 @@ class Article extends React.Component {
                                 <h1 className="modalStyle-mainTitle" >{this.props.name}</h1>
                                 <h3 className="modalStyle-mainMotto">{this.hasMotto ? this.hasMotto : ''}</h3>
                                 <p className="modalStyle-mainDescription">{this.props.description} </p>
-                                {/* <p className="modalStyle-checkIn">{this.hasCheckIn = '' ? this.hasCheckIn + '- Check in' : ''}</p> */}
-                                {/* <p className="modalStyle-mainSchedule">{this.hour}:{this.minutes} - {this.end_hour}:{this.end_minutes} {this.end_timeDay} <span className="dash">-</span>{" "}<span className="added-detail">Event</span></p> */}
                             </div>
 
                             <div className="modalStyle-locationDescriptionContainer">
@@ -202,31 +189,26 @@ class Article extends React.Component {
                         <div className="modalStyle-generalDetails">
                             <div className="modalStyle-infoBox">
                                 <p className="modalStyle-infoBoxTitle"><b>DATE</b></p>
-                                <p className="modalStyle=infoBoxText">{this.monthName} {this.eventDay}, {this.eventYear} </p>
+                                <p className="modalStyle-infoBoxText">{this.monthName} {this.eventDay}, {this.eventYear} </p>
                             </div>
 
                             <div className="modalStyle-infoBox">
                                 <p className="modalStyle-infoBoxTitle"><b>TIME</b></p>
-                                <p className="modalStyle=infoBoxText">{this.hour}:{this.minutes} - {this.end_hour}:{this.end_minutes} {this.end_timeDay} </p>
+                                <p className="modalStyle-infoBoxText">{this.hour}:{this.minutes} - {this.end_hour}:{this.end_minutes} {this.end_timeDay} </p>
                             </div>
 
                             <div className="modalStyle-infoBox">
                                 <p className="modalStyle-infoBoxTitle"><b>LOCATION</b></p>
-                                <p className="modalStyle=infoBoxText">{this.locationName}</p>
-                                <p className="modalStyle=infoBoxText">{this.props.addressStreet} {this.props.addressCity} {this.props.addressState} {this.props.addressZipCode} {this.props.addressCountry}</p>
-                                <p className="modalStyle=infoBoxText"><a href={this.website} className="modalStyle-locationWebsite">{this.props.location} Website</a></p>
-                            </div>
-
-                            <div className="modalStyle-infoBox">
-                                <p className="modalStyle-infoBoxTitle"><b>COST</b></p>
-                                <p className="modalStyle=infoBoxText">{this.cost !== "0.00" ? this.cost : 'FREE'}</p>
+                                <p className="modalStyle-infoBoxText">{this.locationName}</p>
+                                <p className="modalStyle-infoBoxText">{this.props.addressStreet} {this.props.addressCity} {this.props.addressState} {this.props.addressZipCode} {this.props.addressCountry}</p>
+                                <p className="modalStyle-infoBoxText"><a href={this.website} className="modalStyle-locationWebsite">{this.props.location} Website</a></p>
                             </div>
                         </div>
                     </div>
                     <div className="modalStyle-buttonRow">
-                        <button className="modalStyle-preferredButton">Register for this Event</button>
-                        <button className="modalStyle-whiteButton">Sponsor A Player</button>
-                        <button className="modalStyle-closeButton" onClick={this.closeModal} > X </button>
+                        <button className="modalStyle-preferredButton" onClick={() => this.registerEvent(this.props.id)}><FontAwesomeIcon icon={faBasketball}/> Register for this Event</button>
+                        <button className="modalStyle-whiteButton"><FontAwesomeIcon icon={faCircleDollarToSlot}/> Sponsor A Player</button>
+                        <button className="modalStyle-closeButton" onClick={this.closeModal} > <FontAwesomeIcon icon={faXmarkCircle}/> </button>
                     </div>
                 </Modal>
             </div>

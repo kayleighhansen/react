@@ -1,3 +1,5 @@
+/* Article List */
+
 .page-title {
   text-align: center;
   font-size: 45px;
@@ -163,87 +165,82 @@ svg {
   }
 }
 
-/* // Set the styles of the modal
-        // this.modalStyle = {
-        //     overlay: {
-        //         backgroundColor: "rgba(0, 0, 0,0.5)"
-        //     },
-        //     whiteButton: {
-        //         backgroundColor: "gray",
-        //         border: 0,
-        //         padding: "12px 15px",
-        //         color: "white",
-        //         display: "block",
-        //         borderRadius: 3
-        //     },
-        //     preferredButton: {
-        //         backgroundColor: "black",
-        //         border: 0,
-        //         padding: "12px 15px",
-        //         color: "white",
-        //         display: "block",
-        //         borderRadius: 3,
-        //         marginRight: "10px",
-        //     },
-        //     totalEventDetails: {
-        //         display: "grid",
-        //         gridTemplateColumns: "70% 30%"
-        //     },
-        //     modalLink: {
-        //         color: "blue",
-        //         textDecoration: "none",
-        //         fontStyle: "italic"
-        //     },
-        //     buttonRow: {
-        //         display: "flex",
-        //     },
-        //     closeBtn: {
-        //         backgroundColor: "black",
-        //         border: 0,
-        //         padding: "12px 15px",
-        //         color: "white",
-        //         display: "block",
-        //         borderRadius: 3,
-        //         marginLeft: "auto",
-        //     },
-        //     generalDetails: {
-        //         marginTop: "60px",
-        //         marginLeft: "10px",
-        //     },
-        //     specializedDetails: {
-        //         marginRight: "30px"
-        //     },
-        //     modalTitle: {
-        //         fontWeight: "100",
-        //     },
-        //     infoBox: {
-        //         backgroundColor: "rgb(244 244 244)",
-        //         padding: "5px 10px",
-        //         margin: "10px 0px 10px 0px",
-        //     },
-        //     infoBoxTitle: {
-        //         marginBottom: "0",
-        //         marginLeft: "10px",
-        //         fontSize: "15px"
-        //     },
-        //     infoBoxText: {
-        //         marginTop: "10px",
-        //         marginLeft: "10px",
-        //         fontSize: "12px"
-        //     },
-        //     socialBox: {
-        //         backgroundColor: "white",
-        //         height: "50px",
-        //         width: "50px",
-        //         marginRight: "5px",
-        //         marginTop: "10px",
-        //         marginBottom: "10px",
-        //     },
-        //     socialBoxContainer: {
-        //         display: "flex",
-        //         justifyContent: "center"
-        //     }
-        // }; */
+/* Modal */
+
+.modalStyle-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  z-index: -1;
+}
+
+.modalStyle-modalReal {
+  background-color: white;
+  margin: 50px;
+  box-shadow: 0px 0px 10px 0px #504e4e;
+  padding: 20px;
+}
+
+.modalStyle-totalEventDetails {
+  display: grid;
+  grid-template-columns: 70% 30%;
+}
+
+.modalStyle-mainTitle {
+  margin-top: 0px;
+}
+
+.modalStyle-infoBox {
+  background-color: rgb(238, 238, 238);
+  padding: 10px 20px;
+  margin-bottom: 10px;
+}
+
+.modalStyle-infoBoxTitle {
+  margin-top: 3px; 
+  margin-bottom: 3px;
+}
+
+.modalStyle-infoBoxText {
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+.modalStyle-buttonRow {
+  display: flex;
+}
+
+.modalStyle-preferredButton {
+  background-color: #317fbb;
+  border:none;
+  color: white;
+  padding: 10px 20px;
+  margin-right: 5px;
+}
+
+.modalStyle-whiteButton {
+  background-color: #24618f;
+  border:none;
+  color: white;
+  padding: 10px 20px;
+  margin-right: 5px;
+}
+
+.modalStyle-closeButton {
+  margin-left: auto;
+  background-color: white;
+  padding: 0px 12px;
+  border: none;
+}
+
+.fa-circle-xmark {
+  font-size: 25px;
+}
 
 @media only screen and (max-width: 600px) {
 
