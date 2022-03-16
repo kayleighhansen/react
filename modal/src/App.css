@@ -152,7 +152,30 @@
 }
 
 svg {
-  font-size: 15px;
+  font-size: 25px;
+}
+
+.modalStyle-specializedDetails {
+  padding-right: 20px;
+}
+
+.modalSyte-svgBox {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.svg-inline--fa {
+  display: var(--fa-display, inline-block);
+  height: 0.7em;
+  margin-right: 5px;
+  vertical-align: -0.125em;
+}
+
+.modalStyle-svgIcons {
+  height: 35px;
+  margin: 5px;
+  color: lightgray;
 }
 
 @media only screen and (max-width: 850px) {
@@ -209,10 +232,12 @@ svg {
 .modalStyle-infoBoxText {
   margin-top: 5px;
   margin-bottom: 0;
+  font-size: 12px;
 }
 
 .modalStyle-buttonRow {
   display: flex;
+  margin-top: 30px;
 }
 
 .modalStyle-preferredButton {
@@ -236,10 +261,28 @@ svg {
   background-color: white;
   padding: 0px 12px;
   border: none;
+  height: 32px;
 }
 
 .fa-circle-xmark {
   font-size: 25px;
+  color: black;
+}
+
+.modalStyle-buttonRow a {
+  text-decoration: none;
+}
+
+.closeButton {
+  height: 35px;
+}
+
+.modalStyle-contactUs {
+  color: #317fbb;
+}
+
+.modalStyle-subText {
+  margin: 5px 0px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -252,6 +295,15 @@ svg {
     text-align: center;
     font-size: 35px;
     margin: 20px;
+  }
+
+  .modalStyle-totalEventDetails {
+    display: block;
+  }
+
+  
+  .modalStyle-closeButton {
+    display:none;
   }
 
 }
